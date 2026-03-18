@@ -1,8 +1,19 @@
 import SwiftUI
+#if !targetEnvironment(simulator)
+import RealityKit
+#endif
 
 struct ContentView: View {
   @State private var modelPath: URL?
   @State private var isCapturing = false
+
+  private var isCaptureSupported: Bool {
+    #if targetEnvironment(simulator)
+    return false
+    #else
+    return ObjectCaptureSession.isSupported
+    #endif
+  }
 
   var body: some View {
     NavigationStack {
@@ -11,7 +22,7 @@ struct ContentView: View {
           .font(.largeTitle)
           .fontWeight(.bold)
 
-        if ObjectCaptureSession.isSupported {
+        if isCaptureSupported {
           Button {
             isCapturing = true
           } label: {
@@ -35,6 +46,7 @@ struct ContentView: View {
           .navigationTitle("3D Viewer")
           .navigationBarTitleDisplayMode(.inline)
       }
+      #if !targetEnvironment(simulator)
       .fullScreenCover(isPresented: $isCapturing) {
         CaptureView { url in
           isCapturing = false
@@ -43,6 +55,7 @@ struct ContentView: View {
           isCapturing = false
         }
       }
+      #endif
     }
   }
 }

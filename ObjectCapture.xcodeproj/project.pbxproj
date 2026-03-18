@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,17 +11,33 @@
 		0C298639694D82E4D4CD0771 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A881AE55E89A14EB57D8B7F /* ContentView.swift */; };
 		3F522041FE4298B8D65F9244 /* CaptureCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1EBFD5E59375E53A464D7F /* CaptureCoordinator.swift */; };
 		4340F259CF413CCAEEFAB921 /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB064C71089761E21427AA9 /* CaptureView.swift */; };
+		62C438770C944F351183E318 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92761632343CD6940F2FF388 /* SceneKit.framework */; };
 		886EA8DE607C68A15CB7BC20 /* ObjectCaptureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4802971448FFE589E5D7BC /* ObjectCaptureApp.swift */; };
+		BCBA46C5EE4C2680B530FFCB /* RealityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80462DEC618535BC240309B1 /* RealityKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1A881AE55E89A14EB57D8B7F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		80462DEC618535BC240309B1 /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealityKit.framework; path = System/Library/Frameworks/RealityKit.framework; sourceTree = SDKROOT; };
 		8E1EBFD5E59375E53A464D7F /* CaptureCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureCoordinator.swift; sourceTree = "<group>"; };
-		A620C254486173FDF56B89FB /* ObjectCapture.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ObjectCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92761632343CD6940F2FF388 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		A620C254486173FDF56B89FB /* ObjectCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjectCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB064C71089761E21427AA9 /* CaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
 		EDFAA308687AEB163EEDD61A /* ModelViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewerView.swift; sourceTree = "<group>"; };
 		EE4802971448FFE589E5D7BC /* ObjectCaptureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCaptureApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C01AD98D2AD9F3F05E5E2EBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCBA46C5EE4C2680B530FFCB /* RealityKit.framework in Frameworks */,
+				62C438770C944F351183E318 /* SceneKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0A306980DEB3FBD2488CE998 /* Capture */ = {
@@ -37,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				8476E39DA8BF572BFE6A39B5 /* Sources */,
+				B3A1B7FC5E56525CEFDDCC67 /* Frameworks */,
 				A0C9F74CCEFDAF5262D8DF76 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,6 +85,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B3A1B7FC5E56525CEFDDCC67 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				80462DEC618535BC240309B1 /* RealityKit.framework */,
+				92761632343CD6940F2FF388 /* SceneKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C405FF11CDDEE3FEF24D21E1 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +111,7 @@
 			buildConfigurationList = C8234E8E36E4EA4339C74CB6 /* Build configuration list for PBXNativeTarget "ObjectCapture" */;
 			buildPhases = (
 				6BBF63C00B0B49015B3A201C /* Sources */,
+				C01AD98D2AD9F3F05E5E2EBB /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -105,11 +132,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
-				TargetAttributes = {
-					B19A9DAAA5B10DE0452FD367 = {
-						DevelopmentTeam = "";
-					};
-				};
 			};
 			buildConfigurationList = 283FAE9FD6FE5955280D8FE1 /* Build configuration list for PBXProject "ObjectCapture" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -121,7 +143,6 @@
 			);
 			mainGroup = 3A2B2233F397923DEC426E0D;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -151,7 +172,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RH75B2UCHQ;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "3Dオブジェクトをスキャンするためにカメラを使用します";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -289,7 +311,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RH75B2UCHQ;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "3Dオブジェクトをスキャンするためにカメラを使用します";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
