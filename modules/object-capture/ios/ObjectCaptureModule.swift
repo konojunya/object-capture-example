@@ -39,30 +39,31 @@ public class ObjectCaptureModule: Module {
       return false
     }
 
-    AsyncFunction("startCapture") { (promise: Promise) in
+    AsyncFunction("startCapture") { () async throws -> String in
       if #available(iOS 17.0, *) {
         let supported = await MainActor.run {
           ObjectCaptureSession.isSupported
         }
         guard supported else {
-          promise.reject(NotSupportedException())
-          return
+          throw NotSupportedException()
         }
 
-        Task { @MainActor [weak self] in
-          self?.presentCaptureView(promise: promise)
+        return try await withCheckedThrowingContinuation { continuation in
+          Task { @MainActor [weak self] in
+            self?.presentCaptureView(continuation: continuation)
+          }
         }
       } else {
-        promise.reject(NotSupportedException())
+        throw NotSupportedException()
       }
     }
   }
 
   @available(iOS 17.0, *)
   @MainActor
-  private func presentCaptureView(promise: Promise) {
+  private func presentCaptureView(continuation: CheckedContinuation<String, Error>) {
     guard let viewController = appContext?.utilities?.currentViewController() else {
-      promise.reject(PresentationFailedException())
+      continuation.resume(throwing: PresentationFailedException())
       return
     }
 
@@ -71,7 +72,7 @@ public class ObjectCaptureModule: Module {
     coordinator.onComplete = { [weak viewController] path in
       DispatchQueue.main.async {
         viewController?.dismiss(animated: true) {
-          promise.resolve(path)
+          continuation.resume(returning: path)
         }
       }
     }
@@ -79,7 +80,7 @@ public class ObjectCaptureModule: Module {
     coordinator.onError = { [weak viewController] error in
       DispatchQueue.main.async {
         viewController?.dismiss(animated: true) {
-          promise.reject(CaptureFailedException(error.localizedDescription))
+          continuation.resume(throwing: CaptureFailedException(error.localizedDescription))
         }
       }
     }
@@ -87,7 +88,7 @@ public class ObjectCaptureModule: Module {
     coordinator.onCancel = { [weak viewController] in
       DispatchQueue.main.async {
         viewController?.dismiss(animated: true) {
-          promise.reject(CaptureCancelledException())
+          continuation.resume(throwing: CaptureCancelledException())
         }
       }
     }
