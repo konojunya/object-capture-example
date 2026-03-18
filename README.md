@@ -1,4 +1,4 @@
-# rn-object-capture-bridge-example
+# object-capture-example
 
 Swift / SwiftUI で Apple の ObjectCaptureSession を使い、現実のオブジェクトを3Dスキャンする PoC。
 
