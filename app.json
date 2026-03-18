@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "rn-object-capture-bridge-example",
+    "slug": "rn-object-capture-bridge-example",
+    "version": "1.0.0",
+    "scheme": "rn-object-capture",
+    "platforms": ["ios"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.konojunya.rn-object-capture-bridge-example",
+      "deploymentTarget": "17.0",
+      "infoPlist": {
+        "NSCameraUsageDescription": "3Dオブジェクトをスキャンするためにカメラを使用します"
+      }
+    },
+    "plugins": ["expo-router"]
+  }
+}
